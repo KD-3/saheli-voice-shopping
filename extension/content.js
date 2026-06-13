@@ -531,9 +531,10 @@
     if (!list.length) { HUD.el.finWrap.style.display = "none"; return; }
     HUD.el.finWrap.style.display = "";
     HUD.el.finList.innerHTML = list.map((p) => {
-      const carted = HUD.cartedName && (p.name || "").slice(0, 18) === HUD.cartedName.slice(0, 18);
+      const name = p.name || p.title || "";
+      const carted = HUD.cartedName && name.slice(0, 18) === HUD.cartedName.slice(0, 18);
       const sub = [p.price, p.rating, p.review_count].filter(Boolean).join(" · ");
-      return `<div class="fin${carted ? " win" : ""}"><div class="t"><div class="n">${esc(p.name)}</div>` +
+      return `<div class="fin${carted ? " win" : ""}"><div class="t"><div class="n">${esc(name)}</div>` +
              `<div class="s">${esc(sub)}</div></div>${carted ? '<span class="incart">✓ in cart</span>' : ""}</div>`;
     }).join("");
   }
