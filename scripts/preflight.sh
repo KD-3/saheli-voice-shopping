@@ -6,7 +6,7 @@
 set -u
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TUNNEL="https://saporous-nonimitative-rozanne.ngrok-free.dev"
-AGENT="fd1aa41c-d854-46c1-96ac-b9c9eba8cb49"
+AGENT="b2cb5e44-b606-4b9b-a88f-cb9e5551bd14"
 PASS=0; FAIL=0; WARN=0
 
 ok()   { echo "  ✓ $1"; PASS=$((PASS+1)); }

@@ -562,7 +562,7 @@ def trigger_call(session_id: str = DEFAULT_SESSION):
     """Extension's 📞 button: place the outbound Saheli call to the demo phone."""
     key = os.environ.get("BOLNA_API_KEY")
     number = os.environ.get("CALL_NUMBER", "+919919837374")
-    agent = os.environ.get("BOLNA_AGENT_ID", "fd1aa41c-d854-46c1-96ac-b9c9eba8cb49")
+    agent = os.environ.get("BOLNA_AGENT_ID", "b2cb5e44-b606-4b9b-a88f-cb9e5551bd14")
     if not key:
         return {"ok": False, "error": "BOLNA_API_KEY not set on the server"}
     SESSIONS.pop(session_id, None)  # fresh call = fresh session (clear old brief/finalists)
