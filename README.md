@@ -11,6 +11,18 @@ extension (Chrome MV3)  →  context server (FastAPI)  ←  Bolna agent (Cartesi
 
 Beyond the spec MVP, three extensions are built in: **voice-driven search** (`search_amazon` opens results on screen and Saheli sees the top organic hits), an **on-screen presence overlay** (toasts on the page when Saheli looks, queues an action, or finishes one — judges who can't hear the phone can see her), and **critical-review scraping** (her dissuasion ammo comes from the top critical review, not just the positive-skewed top reviews).
 
+## Try the extension (judges / reviewers)
+
+The extension connects to our hosted server — no local setup needed.
+
+1. Download [`saheli-extension.zip`](saheli-extension.zip) (or clone this repo)
+2. Go to `chrome://extensions` → toggle **Developer mode** ON (top right)
+3. Click **Load unpacked** → select the `extension/` folder (or the unzipped folder)
+4. Browse any product on [amazon.in](https://www.amazon.in) — the Saheli panel appears on the right
+5. Click **📞 Call Saheli** in the panel to start a live voice call
+
+> The extension talks to our live context server at the ngrok URL in `extension/config.js`. As long as the server is running (during demo hours), everything works end-to-end.
+
 ## Setup (once)
 
 ```bash
