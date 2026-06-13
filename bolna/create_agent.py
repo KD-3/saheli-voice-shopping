@@ -436,9 +436,17 @@ def patch_agent(payload, prompt, functions):
         k: v for k, v in (api_tools.get("tools_params") or {}).items()
         if k not in our_names
     }
+    # Bolna reads pre_call_message from INSIDE the value block (tools_params),
+    # not from the function's top level — fold it in so the fillers actually play.
+    def value_block(f):
+        v = dict(f["value"])
+        if f.get("pre_call_message"):
+            v["pre_call_message"] = f["pre_call_message"]
+        return v
+
     tools_config["api_tools"] = {
         "tools": kept_tools + [{k: v for k, v in f.items() if k != "value"} for f in functions],
-        "tools_params": {**kept_params, **{f["name"]: f["value"] for f in functions}},
+        "tools_params": {**kept_params, **{f["name"]: value_block(f) for f in functions}},
     }
     return payload
 
