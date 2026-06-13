@@ -359,6 +359,10 @@ async def post_action(request: Request):
         # apply Amazon's REAL price filter via low-price/high-price params + sort
         action["url"] = _search_url(
             body.get("query"), body.get("min_price"), body.get("max_price"), body.get("sort"))
+    elif atype == "back_to_results":
+        # "show me more options" — return to the EXACT results page she was on
+        search = s.get("current_search")
+        action["url"] = (search or {}).get("url")
     s["pending_actions"].append(action)  # queue: no action lost
     s["pending_actions"] = s["pending_actions"][-5:]  # cap at 5
     s["last_action_result"] = None
@@ -373,6 +377,8 @@ async def post_action(request: Request):
         text = "🔍 Searching: %s" % (action["query"] or "")
     elif atype == "open_product":
         text = "↗️ Opening: %s" % (action["product_name"] or asin)
+    elif atype == "back_to_results":
+        text = "↩️ Back to your search results"
     else:
         text = "Saheli queued: %s" % atype
     push_event(s, "action_queued", text.strip(" —"))

@@ -39,7 +39,7 @@ tc = a["tasks"][0]["tools_config"]; cfg = a["tasks"][0]["task_config"]
 llm = tc["llm_agent"].get("llm_config", tc["llm_agent"])
 syn = tc["synthesizer"]
 fns = [t.get("name") for t in (tc.get("api_tools") or {}).get("tools") or []]
-want = {"get_current_page", "add_to_cart", "open_product", "search_amazon", "set_mission", "shortlist_product", "point_at_products"}
+want = {"get_current_page", "add_to_cart", "open_product", "search_amazon", "set_mission", "shortlist_product", "point_at_products", "show_search_results"}
 def line(okflag, msg): print(("  ✓ " if okflag else "  ✗ ") + msg)
 line(syn["provider"] == "cartesia", "voice: %s / %s" % (syn["provider"], syn["provider_config"].get("voice")))
 line("gpt-4o" in str(llm.get("model")), "llm: %s" % llm.get("model"))

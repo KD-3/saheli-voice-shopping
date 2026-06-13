@@ -330,6 +330,28 @@ def saheli_functions(server):
                 "headers": {"Content-Type": "application/json"},
             },
         },
+        {
+            "name": "show_search_results",
+            "description": (
+                "Navigate the user's browser BACK to the search results they were "
+                "viewing. Use whenever they ask to see more options, other choices, "
+                "go back, or 'what else is there' while they are on a single "
+                "product page. This actually MOVES their screen to the results — "
+                "always do this instead of only reading options aloud."
+            ),
+            "parameters": {"type": "object", "properties": {}, "required": []},
+            "key": "custom_task",
+            "pre_call_message": "Haan, wapas options pe chalte hain...",
+            "value": {
+                "method": "POST",
+                "param": {
+                    "type": "back_to_results",
+                    "session_id": SESSION_ID,
+                },
+                "url": server + "/action",
+                "headers": {"Content-Type": "application/json"},
+            },
+        },
     ]
 
 

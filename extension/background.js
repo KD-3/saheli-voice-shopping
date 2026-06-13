@@ -57,6 +57,12 @@ async function handleAction(action, tab, currentAsin) {
     return reportResult(action, true);
   }
 
+  if (action.type === "back_to_results") {
+    if (!action.url) return reportResult(action, false, "no saved search to go back to");
+    await chrome.tabs.update(tab.id, { url: action.url });
+    return reportResult(action, true);
+  }
+
   if (action.type === "highlight") {
     const asins = (action.asins || "").split(",").map((a) => a.trim()).filter(Boolean);
     try {
