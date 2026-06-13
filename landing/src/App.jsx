@@ -8,7 +8,12 @@ import {
   ShieldCheck, 
   Smartphone,
   TrendingUp,
-  Activity
+  Activity,
+  Camera,
+  MessageCircle,
+  Hourglass,
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 
 const FADE_UP = {
@@ -113,6 +118,59 @@ function App() {
                 <span className="text-4xl font-display font-bold text-white block mb-2">15 Min</span>
                 <h3 className="text-lg font-medium text-gray-200">Decision Paralysis</h3>
                 <p className="text-gray-400 text-sm mt-2 leading-relaxed">The average time users stall before taking screenshots to WhatsApp a friend.</p>
+              </div>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* THE WORKFLOW COMPARISON */}
+        <motion.section 
+          initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={STAGGER}
+        >
+          <motion.div variants={FADE_UP} className="mb-12 text-center">
+            <h2 className="text-3xl font-display font-semibold text-white">How India Shops vs How It Should Be</h2>
+            <p className="text-gray-400 mt-2 text-lg">The trust bottleneck is a person. We digitized them.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Old Way */}
+            <motion.div variants={FADE_UP} className="glass-card rounded-2xl p-8 border border-white/5 relative overflow-hidden">
+              <div className="absolute top-0 right-0 px-4 py-1 bg-coral/20 text-coral text-xs font-bold uppercase tracking-wider rounded-bl-lg">Current Flow</div>
+              <div className="flex flex-col gap-6 mt-4">
+                <div className="flex items-center gap-4 text-gray-400">
+                  <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><Camera className="w-4 h-4" /></div>
+                  <span className="font-medium">1. Screenshot the product</span>
+                </div>
+                <div className="flex items-center gap-4 text-gray-400">
+                  <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><MessageCircle className="w-4 h-4" /></div>
+                  <span className="font-medium">2. WhatsApp it to a friend</span>
+                </div>
+                <div className="flex items-center gap-4 text-gray-400">
+                  <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><Hourglass className="w-4 h-4" /></div>
+                  <span className="font-medium">3. Wait hours for a reply</span>
+                </div>
+                <div className="mt-4 pt-4 border-t border-white/5 text-coral/80 text-sm font-medium italic">
+                  Result: Buyer loses interest, cart is abandoned.
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Saheli Way */}
+            <motion.div variants={FADE_UP} className="glass-card rounded-2xl p-8 border border-accent/20 relative overflow-hidden bg-accent/5">
+              <div className="absolute top-0 right-0 px-4 py-1 bg-accent/20 text-accent text-xs font-bold uppercase tracking-wider rounded-bl-lg">With Saheli</div>
+              <div className="flex flex-col gap-6 mt-4 h-full">
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center shrink-0"><Phone className="w-4 h-4 text-background" /></div>
+                  <span className="font-medium">1. Call Saheli from the page</span>
+                </div>
+                <div className="flex items-center gap-4 text-white">
+                  <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><CheckCircle2 className="w-4 h-4 text-accent" /></div>
+                  <span className="font-medium">2. Get an expert verdict instantly</span>
+                </div>
+                <div className="mt-auto pt-4 border-t border-white/5 text-accent text-sm font-medium italic flex items-center gap-2">
+                  <ArrowRight className="w-4 h-4" />
+                  Result: Confident purchase in under 2 minutes.
+                </div>
               </div>
             </motion.div>
           </div>
