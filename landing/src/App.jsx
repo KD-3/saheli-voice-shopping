@@ -58,7 +58,7 @@ function App() {
           </motion.div>
           
           <motion.h1 variants={FADE_UP} className="text-5xl md:text-7xl font-display font-bold tracking-tight text-white max-w-4xl leading-tight">
-            Shop like you have <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-300">backup.</span>
+            The friend you call before you <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-300">buy.</span>
           </motion.h1>
           
           <motion.p variants={FADE_UP} className="mt-6 text-xl text-gray-400 max-w-2xl leading-relaxed">
@@ -141,14 +141,16 @@ function App() {
               <div className="grid md:grid-cols-2 gap-8 w-full text-left">
                 <motion.div variants={FADE_UP} className="p-6 rounded-2xl bg-surface/50 border border-white/5">
                   <TrendingUp className="w-6 h-6 text-accent mb-4" />
-                  <h4 className="text-white font-medium text-lg mb-2">Conversion ↑</h4>
-                  <p className="text-gray-400 text-sm">Drops the 75% abandonment rate by resolving trust issues live on the call. The hesitant buyer decides instead of bouncing.</p>
+                  <h4 className="text-white font-medium text-lg mb-1">Abandonment: 75% → 60%</h4>
+                  <p className="text-accent text-xs font-semibold tracking-wide uppercase mb-3">+15% ABSOLUTE UPLIFT</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">Drops the 75% abandonment rate by resolving trust issues live on the call. The hesitant buyer decides instead of bouncing.</p>
                 </motion.div>
                 
                 <motion.div variants={FADE_UP} className="p-6 rounded-2xl bg-surface/50 border border-white/5">
                   <Activity className="w-6 h-6 text-accent mb-4" />
-                  <h4 className="text-white font-medium text-lg mb-2">Returns ↓</h4>
-                  <p className="text-gray-400 text-sm">Programmatically mines reviews for sizing discrepancies ("runs small") and actively talks the user out of bad buys before checkout.</p>
+                  <h4 className="text-white font-medium text-lg mb-1">Returns: 30% → 18%</h4>
+                  <p className="text-accent text-xs font-semibold tracking-wide uppercase mb-3">-40% REVERSE LOGISTICS</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">Programmatically mines reviews for sizing discrepancies ("runs small") and actively talks the user out of bad buys before checkout.</p>
                 </motion.div>
               </div>
             </div>
