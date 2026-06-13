@@ -1,4 +1,4 @@
-# Saheli — voice AI that shops with you
+# Saheli — voice AI companion that shops with you
 
 A voice companion on a phone call while you browse Amazon.in. She sees the product page you're on, compares it with what you viewed earlier in the call, talks you out of bad buys, and adds to cart when you say so. Built for the Bolna x Cartesia Voc-A-Thon. Full spec: [SAHELI_SPEC.md](SAHELI_SPEC.md).
 
