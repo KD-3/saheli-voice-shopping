@@ -139,18 +139,18 @@ function App() {
               <div className="flex flex-col gap-6 mt-4">
                 <div className="flex items-center gap-4 text-gray-400">
                   <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><Camera className="w-4 h-4" /></div>
-                  <span className="font-medium">1. Screenshot the product</span>
+                  <span className="font-medium">1. Open 6 tabs to compare specs</span>
                 </div>
                 <div className="flex items-center gap-4 text-gray-400">
                   <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><MessageCircle className="w-4 h-4" /></div>
-                  <span className="font-medium">2. WhatsApp it to a friend</span>
+                  <span className="font-medium">2. Doomscroll conflicting reviews</span>
                 </div>
                 <div className="flex items-center gap-4 text-gray-400">
                   <div className="w-10 h-10 rounded-full bg-surface flex items-center justify-center border border-white/5 shrink-0"><Hourglass className="w-4 h-4" /></div>
-                  <span className="font-medium">3. Wait hours for a reply</span>
+                  <span className="font-medium">3. WhatsApp a friend to be sure</span>
                 </div>
                 <div className="mt-4 pt-4 border-t border-white/5 text-coral/80 text-sm font-medium italic">
-                  Result: Buyer loses interest, cart is abandoned.
+                  Result: Cognitive overload. Cart abandoned.
                 </div>
               </div>
             </motion.div>
