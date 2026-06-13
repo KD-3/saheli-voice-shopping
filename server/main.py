@@ -62,7 +62,7 @@ def session(session_id: str) -> dict[str, Any]:
             "current": None,
             "current_search": None,
             "history": [],
-            "pending_action": None,
+            "pending_actions": [],
             "last_action_result": None,
             "events": [],
             "event_seq": 0,
@@ -359,7 +359,8 @@ async def post_action(request: Request):
         # apply Amazon's REAL price filter via low-price/high-price params + sort
         action["url"] = _search_url(
             body.get("query"), body.get("min_price"), body.get("max_price"), body.get("sort"))
-    s["pending_action"] = action  # single slot: newest wins
+    s["pending_actions"].append(action)  # queue: no action lost
+    s["pending_actions"] = s["pending_actions"][-5:]  # cap at 5
     s["last_action_result"] = None
     if atype == "add_to_cart":
         text = "🛒 Adding to cart: %s — %s" % (action["product_name"] or asin, action["price"] or "")
@@ -423,10 +424,10 @@ def _url_for_asin(s: dict, asin: str) -> str | None:
 @app.get("/action")
 def get_action(session_id: str = DEFAULT_SESSION):
     s = session(session_id)
-    action = s["pending_action"]
-    if action is None:
+    q = s["pending_actions"]
+    if not q:
         return Response(status_code=204)
-    s["pending_action"] = None  # consumed on read
+    action = q.pop(0)  # FIFO: oldest first
     s["dispatched"] = {"type": action["type"], "at": time.time()}
     return action
 
