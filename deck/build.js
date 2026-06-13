@@ -67,8 +67,8 @@ async function icon(IconComponent, color) {
   s.addText("That 15 minutes of doubt on the product page is where carts die and bad buys are made — and no one serves it.", { x: 0.7, y: 2.62, w: 12, h: 0.7, fontFace: HEAD, italic: true, color: CORAL_SOFT, fontSize: 17, margin: 0 });
   const probCards = [
     ["clock", "15 minutes of doubt", "where the decision stalls and the buyer opens WhatsApp"],
-    ["cart", "75% Carts abandoned", "to decision paralysis and unresolved doubt, not price"],
-    ["undo", "Returns that hurt", "Apparel return rates hit 20-30%, destroying platform margins"],
+    ["cart", "75% Carts abandoned", "due to review fatigue and lack of trust, not just price"],
+    ["undo", "20-30% Return rates", "driven by missed sizing warnings buried deep in reviews"],
   ];
   probCards.forEach((c, i) => {
     const x = 0.7 + i * 4.05;
@@ -144,9 +144,9 @@ async function icon(IconComponent, color) {
   ], { x: 0, y: 1.55, w: W, h: 1.1, align: "center", fontSize: 48, margin: 0 });
   s.addText("time to a confident, well-informed decision", { x: 0, y: 2.75, w: W, h: 0.4, align: "center", fontFace: BODY, italic: true, color: ICE, fontSize: 16, margin: 0 });
   const mets = [
-    ["bolt", "Decision time", "hours, or abandoned, → under 2 min — you just watched it happen"],
-    ["chart", "Conversion ↑", "Drops the 75% cart abandonment rate by resolving hesitation live"],
-    ["undoG", "Returns ↓", "Intercepts the #1 cause of returns (wrong size / specs) before checkout"],
+    ["bolt", "Decision time", "hours of WhatsApping → under 2 min. Saheli acts as the closer."],
+    ["chart", "Conversion ↑", "Drops the 75% abandonment rate by resolving trust issues live."],
+    ["undoG", "Returns ↓", "Saheli reads 'runs small' in the reviews before they checkout."],
   ];
   mets.forEach((m, i) => {
     const x = 0.7 + i * 4.05;
