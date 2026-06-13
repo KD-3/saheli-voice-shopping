@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Saheli — voice shopping companion",
+  "version": "0.1.0",
+  "description": "Sends the Amazon.in product page you're viewing to Saheli's context server and executes her cart actions.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://localhost/*",
+    "https://*.ngrok.app/*",
+    "https://*.ngrok-free.app/*",
+    "https://*.ngrok-free.dev/*",
+    "https://*.ngrok.dev/*",
+    "https://*.ngrok.io/*",
+    "https://*.up.railway.app/*",
+    "https://*.onrender.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.in/*"],
+      "js": ["config.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

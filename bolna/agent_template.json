@@ -1,0 +1,56 @@
+{
+  "_README": "Fallback template only. PREFERRED FLOW: create a throwaway agent in the Bolna dashboard with a Cartesia voice, then run `python create_agent.py --from-existing <AGENT_ID>` — that clones the dashboard agent's exact config (incl. the Cartesia synthesizer block) and patches in the Saheli prompt + functions. If you must create from this template, first replace the synthesizer block below with the one from `python create_agent.py --get <AGENT_ID>` of any dashboard agent.",
+  "agent_config": {
+    "agent_name": "Saheli",
+    "agent_type": "other",
+    "agent_welcome_message": "Hi, Saheli here! What are we buying today?",
+    "tasks": [
+      {
+        "task_type": "conversation",
+        "toolchain": {
+          "execution": "parallel",
+          "pipelines": [["transcriber", "llm", "synthesizer"]]
+        },
+        "tools_config": {
+          "llm_agent": {
+            "agent_type": "simple_llm_agent",
+            "agent_flow_type": "streaming",
+            "llm_config": {
+              "provider": "openai",
+              "model": "gpt-4o",
+              "max_tokens": 150,
+              "temperature": 0.4
+            }
+          },
+          "synthesizer": {
+            "_REPLACE_ME": "Paste the exact Cartesia synthesizer block from a dashboard-created agent here (run create_agent.py --get <id>). Model: sonic-3-preview. Pick the voice by ear from 3 candidates.",
+            "provider": "cartesia",
+            "stream": true,
+            "audio_format": "wav",
+            "provider_config": {
+              "model": "sonic-3-preview",
+              "voice_id": "REPLACE_ME"
+            }
+          },
+          "transcriber": {
+            "provider": "deepgram",
+            "model": "nova-3",
+            "language": "en",
+            "stream": true
+          },
+          "input": {"provider": "twilio", "format": "wav"},
+          "output": {"provider": "twilio", "format": "wav"},
+          "api_tools": null
+        },
+        "task_config": {
+          "hangup_after_silence": 30
+        }
+      }
+    ]
+  },
+  "agent_prompts": {
+    "task_1": {
+      "system_prompt": "LOADED_FROM_system_prompt.txt_BY_SCRIPT"
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "id": "fd1aa41c-d854-46c1-96ac-b9c9eba8cb49",
+  "agent_name": "Saheli",
+  "agent_status": "processed",
+  "agent_welcome_message": "Hello from Bolna",
+  "agent_type": "",
+  "webhook_url": null,
+  "tasks": [
+    {
+      "task_type": "conversation",
+      "toolchain": {
+        "execution": "parallel",
+        "pipelines": [
+          [
+            "transcriber",
+            "llm",
+            "synthesizer"
+          ]
+        ]
+      },
+      "task_config": {
+        "voicemail": false,
+        "use_fillers": false,
+        "dtmf_enabled": false,
+        "ambient_noise": false,
+        "inbound_limit": -1,
+        "backchanneling": false,
+        "call_terminate": 300,
+        "auto_reschedule": false,
+        "optimize_latency": true,
+        "incremental_delay": 500,
+        "ambient_noise_track": "office-ambience",
+        "call_hangup_message": null,
+        "check_if_user_online": true,
+        "hangup_after_LLMCall": false,
+        "hangup_after_silence": 15,
+        "welcome_message_delay": 0,
+        "whitelist_phone_numbers": null,
+        "call_cancellation_prompt": null,
+        "disallow_unknown_numbers": false,
+        "language_detection_turns": null,
+        "noise_cancellation_level": null,
+        "voicemail_check_interval": 7.0,
+        "voicemail_detection_time": 2.5,
+        "check_user_online_message": {
+          "en": "Hello, are you still on the line?",
+          "hi": "Hello, क्या आप अभी भी लाइन पर हैं?"
+        },
+        "backchanneling_message_gap": 5,
+        "backchanneling_start_delay": 5,
+        "interruption_backoff_period": 0,
+        "voicemail_detection_duration": 30.0,
+        "discard_pre_welcome_utterance": false,
+        "voicemail_min_transcript_length": 7,
+        "number_of_words_for_interruption": 2,
+        "trigger_user_online_message_after": 10
+      },
+      "tools_config": {
+        "input": {
+          "format": "wav",
+          "provider": "vobiz"
+        },
+        "output": {
+          "format": "wav",
+          "provider": "vobiz"
+        },
+        "api_tools": null,
+        "llm_agent": {
+          "agent_type": "simple_llm_agent",
+          "llm_config": {
+            "stop": null,
+            "min_p": 0.1,
+            "model": "azure/gpt-4.1-mini",
+            "top_k": 0,
+            "top_p": 0.9,
+            "family": "openai",
+            "base_url": null,
+            "provider": "azure",
+            "verbosity": null,
+            "max_tokens": 350,
+            "temperature": 0.2,
+            "request_json": false,
+            "agent_flow_type": "streaming",
+            "presence_penalty": 0.0,
+            "reasoning_effort": null,
+            "compact_threshold": null,
+            "frequency_penalty": 0.0,
+            "use_responses_api": false,
+            "extraction_details": null,
+            "summarization_details": null
+          },
+          "agent_flow_type": "streaming"
+        },
+        "agent_names": null,
+        "synthesizer": {
+          "stream": true,
+          "caching": true,
+          "provider": "elevenlabs",
+          "buffer_size": 220,
+          "audio_format": "wav",
+          "provider_config": {
+            "model": "eleven_turbo_v2_5",
+            "speed": 1.0,
+            "style": 0.0,
+            "voice": "Ziina - Confident & Clear",
+            "voice_id": "FaqthkZu1EWxXxUFbAfb",
+            "temperature": 0.5,
+            "similarity_boost": 0.6
+          }
+        },
+        "transcriber": {
+          "task": "transcribe",
+          "delay": "medium",
+          "model": "nova-3",
+          "active": null,
+          "stream": true,
+          "encoding": "linear16",
+          "keywords": "",
+          "language": "hi",
+          "provider": "deepgram",
+          "endpointing": 300,
+          "multilingual": null,
+          "eot_threshold": null,
+          "sampling_rate": 16000,
+          "vad_threshold": 0.5,
+          "eot_timeout_ms": null,
+          "language_hints": null,
+          "noise_reduction": false,
+          "eager_eot_threshold": null,
+          "vad_prefix_padding_ms": 300
+        },
+        "multilingual_config": null,
+        "switch_handoff_messages": null,
+        "switch_tool_description": null
+      }
+    }
+  ],
+  "created_at": "2026-06-11T03:59:58.463595",
+  "updated_at": "2026-06-11T04:00:05.983977",
+  "gpt_assistants": [],
+  "custom_analytics": [],
+  "inbound_phone_number": null,
+  "restricted": false,
+  "calling_guardrails": null,
+  "webhook_headers": null,
+  "sip_header_variables": null,
+  "ingest_lookup_key": null,
+  "webhook_config": "null",
+  "dispositions": [
+    "268239f7-a3c7-4ff4-b1d5-d01c1643228d"
+  ],
+  "agent_prompts": {
+    "task_1": {
+      "system_prompt": "You are a helpful agent. You will help the customer with their queries and doubts. You will never speak more than 2 sentences. Keep your responses concise"
+    }
+  },
+  "ingest_source_config": null
+}
