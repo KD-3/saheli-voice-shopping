@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -158,15 +159,51 @@ def clean_page(raw: dict) -> dict:
     return page
 
 
+def _parse_rating(s):
+    m = re.search(r"([\d.]+)", str(s or ""))
+    try:
+        return float(m.group(1)) if m else None
+    except ValueError:
+        return None
+
+
+def _parse_count(s):
+    t = str(s or "").strip().replace(",", "").lstrip("(").rstrip(")")
+    m = re.match(r"([\d.]+)\s*([kK])?", t)
+    if not m:
+        return None
+    n = float(m.group(1))
+    if m.group(2):
+        n *= 1000
+    return int(n)
+
+
+def _trust_flag(rating, n):
+    """Volume-weighted trust — the signal Amazon's rank order ignores."""
+    if n is not None and n < 50:
+        return "untested — few reviews, rating may be inflated"
+    if rating is not None and rating < 3.8:
+        return "weak rating"
+    if rating is not None and rating >= 4.0 and n is not None and n >= 500:
+        return "trusted — good rating on real volume"
+    if rating is not None and rating >= 4.0 and n is not None and n >= 100:
+        return "solid"
+    return "ok"
+
+
 def clean_search(raw: dict) -> dict:
     results = []
     for r in (raw.get("results") or [])[:MAX_SEARCH_RESULTS]:
+        rating_f = _parse_rating(r.get("rating"))
+        n = _parse_count(r.get("review_count"))
         item = {
             "position": r.get("position", len(results) + 1),
             "name": (r.get("name") or "")[:90],
             "price": r.get("price"),
             "rating": r.get("rating"),
             "review_count": r.get("review_count"),
+            "reviews_n": n,
+            "trust": _trust_flag(rating_f, n),
             "asin": r.get("asin"),
             "url": r.get("url"),
         }
@@ -179,6 +216,10 @@ def clean_search(raw: dict) -> dict:
         "url": raw.get("url"),
         "results": results,
         "received_at": raw.get("received_at", time.time()),
+        "how_to_pick": (
+            "Recommend by trust, not by position. Amazon's order is relevance "
+            "and ads, not quality. A 4.2 from thousands beats a 4.6 from twenty."
+        ),
     }
 
 

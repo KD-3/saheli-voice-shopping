@@ -99,7 +99,7 @@ def saheli_functions(server):
             ),
             "parameters": {"type": "object", "properties": {}, "required": []},
             "key": "custom_task",
-            "pre_call_message": "One sec, let me take a look...",
+            "pre_call_message": "Ek sec, dekhti hoon...",
             "value": {
                 "method": "GET",
                 "param": {},
@@ -124,7 +124,7 @@ def saheli_functions(server):
                 "required": ["asin", "product_name"],
             },
             "key": "custom_task",
-            "pre_call_message": "Haan, adding it to your cart...",
+            "pre_call_message": "Haan haan, daal rahi hoon cart mein...",
             "value": {
                 "method": "POST",
                 "param": {
@@ -156,7 +156,7 @@ def saheli_functions(server):
                 "required": ["asin"],
             },
             "key": "custom_task",
-            "pre_call_message": "Opening it on your screen...",
+            "pre_call_message": "Chalo, khol ke dikhati hoon...",
             "value": {
                 "method": "POST",
                 "param": {
@@ -203,7 +203,7 @@ def saheli_functions(server):
                 "required": ["query"],
             },
             "key": "custom_task",
-            "pre_call_message": "Okay, searching...",
+            "pre_call_message": "Okay ruko, dhoondhti hoon kya milta hai...",
             "value": {
                 "method": "POST",
                 "param": {
@@ -286,7 +286,7 @@ def saheli_functions(server):
                 "required": ["asin"],
             },
             "key": "custom_task",
-            "pre_call_message": "Haan, keeping it aside...",
+            "pre_call_message": "Theek hai, ise side mein rakh leti hoon...",
             "value": {
                 "method": "POST",
                 "param": {
@@ -341,7 +341,7 @@ def saheli_functions(server):
             ),
             "parameters": {"type": "object", "properties": {}, "required": []},
             "key": "custom_task",
-            "pre_call_message": "Haan, wapas options pe chalte hain...",
+            "pre_call_message": "Chalo, wapas options pe chalte hain...",
             "value": {
                 "method": "POST",
                 "param": {
